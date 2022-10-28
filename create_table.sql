@@ -1,3 +1,8 @@
+CREATE DATABASE airbnb;
+USE Airbnb;
+
+-- DROP DATABASE airbnb;
+
 CREATE TABLE `customer` (
   `cid` int PRIMARY KEY,
   `name` varchar(40)
@@ -14,7 +19,7 @@ CREATE TABLE `host` (
   `since` datetime,
   `location` varchar(40),
   `description` varchar(500),
-  `response_time` Enum,
+  `response_time` Enum('within an hour', 'within a day', 'within a few hours'),
   `response_rate` float,
   `acceptance` float,
   `is_super_host` int,
@@ -58,7 +63,13 @@ CREATE TABLE `listing` (
   `host` int,
   `latitude` float,
   `longitude` float,
-  `property_type` Enum,
+ `property_type` Enum('Entire condo', 
+       'Private room in rental unit', 
+       'Private room in condo', 
+	   'Room in hostel', 
+       'Private room in home',
+       'Entire rental unit',
+       'Entire home'),
   `accommodates` int,
   `bathrooms` varchar(40),
   `bedrooms` int,
@@ -108,3 +119,5 @@ ALTER TABLE `listing_url` ADD FOREIGN KEY (`lid`) REFERENCES `listing` (`lid`);
 ALTER TABLE `listing_picture` ADD FOREIGN KEY (`lid`) REFERENCES `listing` (`lid`);
 
 ALTER TABLE `calendar` ADD FOREIGN KEY (`property`) REFERENCES `listing` (`lid`);
+
+
