@@ -9,8 +9,7 @@ CREATE TABLE `neighborhood` (
 );
 
 CREATE TABLE `host` (
-  `hid` int[pk],
-  `url` varchar(80),
+  `hid` int PRIMARY KEY,
   `name` varchar(40),
   `since` datetime,
   `location` varchar(40),
@@ -19,13 +18,26 @@ CREATE TABLE `host` (
   `response_rate` float,
   `acceptance` float,
   `is_super_host` int,
-  `thumbnail` varchar(80),
-  `picture` varchar(80),
   `neighborhood` varchar(40),
   `email_verified` int,
   `phone_verified` int,
   `work_email_verified` int,
   `identity_verified` int
+);
+
+CREATE TABLE `host_url` (
+  `hid` int PRIMARY KEY,
+  `url` varchar(80)
+);
+
+CREATE TABLE `host_thumbnail` (
+  `hid` int PRIMARY KEY,
+  `thumbnail` varchar(80)
+);
+
+CREATE TABLE `host_picture` (
+  `hid` int PRIMARY KEY,
+  `picture` varchar(80)
 );
 
 CREATE TABLE `transaction` (
@@ -40,11 +52,9 @@ CREATE TABLE `transaction` (
 
 CREATE TABLE `listing` (
   `lid` int PRIMARY KEY,
-  `url` varchar(80),
   `name` varchar(40),
   `description` varchar(500),
   `neighborhood` varchar(40),
-  `picture_url` varchar(80),
   `host` int,
   `latitude` float,
   `longitude` float,
@@ -54,6 +64,16 @@ CREATE TABLE `listing` (
   `bedrooms` int,
   `beds` int,
   `amenities` varchar(500)
+);
+
+CREATE TABLE `listing_url` (
+  `lid` int PRIMARY KEY,
+  `url` varchar(80)
+);
+
+CREATE TABLE `listing_picture` (
+  `lid` int PRIMARY KEY,
+  `picture` varchar(80)
 );
 
 CREATE TABLE `calendar` (
@@ -69,6 +89,12 @@ CREATE TABLE `calendar` (
 
 ALTER TABLE `host` ADD FOREIGN KEY (`neighborhood`) REFERENCES `neighborhood` (`name`);
 
+ALTER TABLE `host_url` ADD FOREIGN KEY (`hid`) REFERENCES `host` (`hid`);
+
+ALTER TABLE `host_thumbnail` ADD FOREIGN KEY (`hid`) REFERENCES `host` (`hid`);
+
+ALTER TABLE `host_picture` ADD FOREIGN KEY (`hid`) REFERENCES `host` (`hid`);
+
 ALTER TABLE `transaction` ADD FOREIGN KEY (`customer`) REFERENCES `customer` (`cid`);
 
 ALTER TABLE `transaction` ADD FOREIGN KEY (`property`) REFERENCES `listing` (`lid`);
@@ -76,5 +102,9 @@ ALTER TABLE `transaction` ADD FOREIGN KEY (`property`) REFERENCES `listing` (`li
 ALTER TABLE `listing` ADD FOREIGN KEY (`neighborhood`) REFERENCES `neighborhood` (`name`);
 
 ALTER TABLE `listing` ADD FOREIGN KEY (`host`) REFERENCES `host` (`hid`);
+
+ALTER TABLE `listing_url` ADD FOREIGN KEY (`lid`) REFERENCES `listing` (`lid`);
+
+ALTER TABLE `listing_picture` ADD FOREIGN KEY (`lid`) REFERENCES `listing` (`lid`);
 
 ALTER TABLE `calendar` ADD FOREIGN KEY (`property`) REFERENCES `listing` (`lid`);
