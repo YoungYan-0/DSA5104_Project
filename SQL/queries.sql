@@ -1,6 +1,6 @@
 SELECT availability
 FROM calendar JOIN listing ON calendar.property = listing.lid
-WHERE listing.name = 'Nice room with superb city view' AND date = '2022-01-04';
+WHERE listing.name = 'Nice room with superb city view' AND date = '2022-06-20';
 
 SELECT customer.name, transaction.start_date, transaction.end_date, transaction.total_price, transaction.review, listing.review_scores_rating
 FROM transaction JOIN customer ON transaction.customer = customer.cid JOIN listing ON transaction.property = listing.lid
@@ -17,11 +17,11 @@ WHERE name = 'Nice room with superb city view';
 
 UPDATE calendar
 SET availability = 0
-WHERE property = 10547346 AND date >= '2022-01-04' AND date <= '2022-01-06';
+WHERE property = 10547346 AND date >= '2022-06-20' AND date <= '2022-06-23';
 
 SELECT *
 FROM listing JOIN calendar ON listing.lid = calendar.property
-WHERE calendar.date = '2022-01-04' AND calendar.availability = 1;
+WHERE calendar.date = '2022-06-20' AND calendar.availability = 1;
 
 SELECT *
 FROM listing

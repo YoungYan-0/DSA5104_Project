@@ -1,5 +1,5 @@
 listing = db.Listing.findOne({"name": "Nice room with superb city view"})
-db.Calendar.find({"property": listing._id, "date": "2022-01-04"}, {"available": 1})
+db.Calendar.find({"property": listing._id, "date": "2022-06-20"}, {"available": 1})
 
 transactions = db.Transaction.find({"property": listing._id}, {"customer": 1, "property": 1, "start_date": 1, "end_date": 1, "total_price": 1, "review": 1}).sort("start_date", -1)
 transactions
@@ -11,9 +11,9 @@ db.Host_url.find({"host": listing.host}, {"url": 1})
 
 listing
 
-db.Calendar.updateMany({"property": listing._id, "date": {"$gte": "2022-01-04", "$lte": "2022-01-06"}}, {"$set": {"availability": False}})
+db.Calendar.updateMany({"property": listing._id, "date": {"$gte": "2022-06-20", "$lte": "2022-06-23"}}, {"$set": {"availability": False}})
 
-availables = db.Calendar.find({"date": "2022-01-04", "available": True}, {"property": 1})
+availables = db.Calendar.find({"date": "2022-06-20", "available": True}, {"property": 1})
 db.Listing.find({"_id": {"$in": [a.property for a in availables]}})
 
 db.Listing.find({"neighbourhood": "Sathon", "property_type": "Apartment", "bedrooms": 1, "beds": 1, "bathrooms": 1, "accommodates": 2, "reviews_scores_rating": {"$gte": 4}})
