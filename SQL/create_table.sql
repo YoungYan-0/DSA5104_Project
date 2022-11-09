@@ -83,6 +83,13 @@ CREATE TABLE `listing` (
   `bedrooms` int,
   `beds` int,
   `amenities` varchar(2000)
+  `reviews_scores_rating` float,
+  `reviews_scores_accuracy` float,
+  `reviews_scores_cleanliness` float,
+  `reviews_scores_checkin` float,
+  `reviews_scores_communication` float,
+  `reviews_scores_location` float,
+  `reviews_scores_value` float
 );
 
 CREATE TABLE `listing_url` (
