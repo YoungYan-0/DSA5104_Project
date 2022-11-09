@@ -25,7 +25,7 @@ WHERE calendar.date = '2022-01-04' AND calendar.availability = 1;
 
 SELECT *
 FROM listing
-WHERE listing.neighbourhood = 'Sathon' AND listing.property_type = 'Apartment' AND listing.bedrooms = 1 AND listing.beds = 1 AND listing.bathrooms = 1 AND listing.accommodates = 2 AND listing.price <= 300 AND listing.review_scores_rating >= 4;
+WHERE listing.neighbourhood = 'Sathon' AND listing.property_type = 'Apartment' AND listing.bedrooms = 1 AND listing.beds = 1 AND listing.bathrooms = 1 AND listing.accommodates = 2 AND listing.review_scores_rating >= 4;
 
 UPDATE transaction
 SET review = 'This is a great place to stay. The host is very nice and the room is clean and comfortable. I would definitely recommend this place to my friends.'
