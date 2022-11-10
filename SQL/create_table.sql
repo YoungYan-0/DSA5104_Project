@@ -82,7 +82,7 @@ CREATE TABLE `listing` (
   `bathrooms` varchar(100),
   `bedrooms` int,
   `beds` int,
-  `amenities` varchar(2000)
+  `amenities` varchar(2000),
   `reviews_scores_rating` float,
   `reviews_scores_accuracy` float,
   `reviews_scores_cleanliness` float,
