@@ -47,13 +47,13 @@ CREATE TABLE `host_picture` (
 );
 
 CREATE TABLE `transaction` (
-  `tid` int PRIMARY KEY,
+  `tid` bigint PRIMARY KEY,
   `customer` int,
   `property` bigint,
   `start_date` datetime,
   `end_date` datetime,
   `total_price` int,
-  `review` varchar(500)
+  `review` varchar(10000)
 );
 
 CREATE TABLE `listing` (
@@ -83,13 +83,13 @@ CREATE TABLE `listing` (
   `bedrooms` int,
   `beds` int,
   `amenities` varchar(2000),
-  `reviews_scores_rating` float,
-  `reviews_scores_accuracy` float,
-  `reviews_scores_cleanliness` float,
-  `reviews_scores_checkin` float,
-  `reviews_scores_communication` float,
-  `reviews_scores_location` float,
-  `reviews_scores_value` float
+  `review_scores_rating` float,
+  `review_scores_accuracy` float,
+  `review_scores_cleanliness` float,
+  `review_scores_checkin` float,
+  `review_scores_communication` float,
+  `review_scores_location` float,
+  `review_scores_value` float
 );
 
 CREATE TABLE `listing_url` (
